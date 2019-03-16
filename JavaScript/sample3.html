@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+    <html lang="ja">
+    <head>
+        <meta charset="UTF-8">
+        <title>Hello!</title>
+    </head>
+    <body>
+        <h1>JavaScript</h1>
+        <script>
+            var month = 3;
+            var season = parseInt(month / 3);
+            var result = '';
+            switch(season) {
+                case 0:
+                    result = 'Winter';
+                    break;
+                case 1:
+                    result = 'Spring';
+                    break;
+                case 2:
+                    result = 'Summer';
+                    break;
+                case 3:
+                    result = 'Autumn';
+                    break;
+                case 4:
+                    if (month == 12) {
+                        result = '今年ももう終りです。';
+                    } else {
+                        result = 'Error';
+                    }
+                    break;
+                 default:
+                    result = 'Error';
+            }
+            document.write(month + '月は、' + result);
+        </script>
+    </body>
+    </html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+    <html lang="ja">
+    <head>
+        <meta charset="UTF-8">
+        <title>Hello!</title>
+    </head>
+<body>
+    <h1>JavaScript!</h1>
+    <script>
+        var dow = '日';
+        var price = 123000; // 金額
+        var tax = 0.08
+        if (dow == '日') {
+            var result = price * 0.8 * (1.0 + tax);
+        } else {
+            var result = price * (1.0 + tax);
+        }
+        document.write(dow + '曜日に買い物した金額:' + price + '円');
+        document.write('<br><br>総額：' + result + '円');
+    </script>
+</body>
+    </html>
