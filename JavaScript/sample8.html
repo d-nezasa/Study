@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8">
+        <title>Hello!</title>
+    </head>
+    <body>
+        <h1>JavaScript!</h1>
+        <script>
+            var obj = new Object();
+            obj.calc = function() {
+                var total = 0;
+                for (var key in this.data) {
+                    total += this.data[key];
+                }
+                var ave = total / 5;
+                document.write('※' + this.name + 'さんの結果<br>');
+                document.write('合計：' + total + '<br>');
+                document.write('平均：' + ave + '<br>');
+            }
+            obj.name = '太郎';
+            obj.data = {'国語':98,'数学':56,'理科':45,'社会':28,'英語':97};
+            obj.calc();
+        </script>
+    </body>
+</html>

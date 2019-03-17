@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8">
+        <title>Hello!</title>
+    </head>
+    <body>
+        <h1>JavaScript!</h1>
+        <script>
+            var arr = {'国語':98, '数学':76, '理科':54, '社会':78, "英語":69};
+            var total = 0;
+            for (var key in arr) {
+                total += arr[key];
+                document.write(key + ': ' + arr[key] + '<br>');
+            }
+            var ave = total / 5;
+            document.write('<br>合計：' + total + '  平均:' + ave);
+        </script>
+    </body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8">
+        <title>Hello!</title>
+    </head>
+    <body>
+        <h1>JavaScript!</h1>
+        <script>
+            var arr = {'名前':'太朗','国語':98,'数学':76,'理科':54,'社会':21,'英語':89};
+            calc(arr);
+            var arr = {'名前':'花子','国語':75,'数学':89,'理科':05,'社会':40,'英語':87};
+            calc(arr);
+            var arr = {'名前':'幸子','国語':21,'数学':34,'理科':45,'社会':56,'英語':87};
+            calc(arr);
+            function calc(data) {
+                var total = 0;
+                for (var key in data) {
+                    if (key == '名前') {
+                        document.write(data[key] + 'さんの結果　');
+                    } else {
+                        total += data[key];
+                    }
+                }
+                var ave = total / 5;
+                document.write('合計：' + total + ' 平均：' + ave + '<br>');
+            }
+        </script>
+    </body>
+</html>

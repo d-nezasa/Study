@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8">
+        <title>Hello!</title>
+    </head>
+    <body>
+        <h1>JavaScript!</h1>
+        <script>
+            var arr = [98, 76, 54, 78, 69];
+            var total = 0;
+            for (var n in arr) {
+                total += arr[n];
+            }
+            var ave = total / 5;
+            document.write('合計：' + total + '  平均:' + ave);
+        </script>
+    </body>
+</html>
