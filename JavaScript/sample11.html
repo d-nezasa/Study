@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8">
+        <title>Hello!</title>
+        <script>
+            function action() {
+                var txt = document.querySelector('#txt');
+                var str = txt.value;
+                var tag = document.querySelector('#msg');
+                tag.textContent = 'You typed: ' + str;
+            }
+        </script>
+    </head>
+    <body>
+        <h1>JavaScript!</h1>
+        <p id="msg">please click...</p>
+        <div>
+            <input type='text' id="txt">
+            <button onclick="action();">Click</button>
+        </div>
+    </body>
+</html>

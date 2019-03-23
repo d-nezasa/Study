@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>Hello!</title>
+    <script>
+        function initial() {
+            var tag = document.querySelector('#msg');
+            tag.style.color="black";
+            tag.style.backgroundColor = "red";
+            tag.style.left = "100px";
+            tag.style.top = "100px";
+            tag.style.width = "200px";
+            tag.style.height = "200px";
+            tag.style.fontSize = "24pt";
+        }
+    </script>
+</head>
+<body onload="initial();">
+    <h1>JavaScript</h1>
+    <dev id="msg" style="position:absolute;">id = "msg"</dev>
+</body>
+</html>

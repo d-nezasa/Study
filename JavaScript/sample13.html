@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>Hello!</title>
+    <script>
+        function initial() {
+            var canvas = document.querySelector('#canvas');
+            var context = canvas.getContext('2d');
+            context.fillStyle = "#EEFFEE";
+            context.fillRect(0, 0, 400, 400);
+            context.fillStyle = "red";
+            context.strokeStyle = "blue";
+            context.fillRect(50,50,200,200);
+            context.strokeRect(150,150,200,200);
+        }
+    </script>
+</head>
+<body onload="initial();">
+    <h1>JavaScript!</h1>
+    <canvas id='canvas' width="400" height="400" />
+</body>
+</html>
