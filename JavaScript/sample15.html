@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <title>Hello!</title>
+    <script>
+        var canvas = null;
+        var context = null;
+        var back = null;
+        var chara = null;
+        var x = 300;
+        var y = 150;
+        var dx = 5;
+
+        function initial() {
+            canvas = document.querySelector('#canvas');
+            context = canvas.getContext('2d');
+            // 背景の表示
+            back = new Image();
+            back.src = 'image/backgrounds.png';
+            back.onload = function() {
+                draw();
+            }
+            // キャラクターの表示
+            chara = new Image();
+            chara.src = 'image/github_octocat.png';
+            chara.onload = function() {
+                draw();
+            }
+            setInterval(draw, 50);
+        }
+        // 描画処理
+        function draw() {
+            context.drawImage(back, 0, 0);
+            context.drawImage(chara, x, y, 100, 100);
+            x += dx;
+            if (x < 0) { dx *= -1; }
+            if (x > 600) { dx *= -1; }
+        }
+    </script>
+</head>
+<body onload="initial();">
+    <h1>JavaScript!</h1>
+    <canvas id="canvas" width="800" height="400" />
+</body>
+</html>

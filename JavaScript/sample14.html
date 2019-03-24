@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <title>Hello!</title>
+    <script>
+        var back = null;
+        var chara = null;
+        function initial() {
+            var canvas = document.querySelector('#canvas');
+            var context = canvas.getContext('2d');
+            // 背景画像の準備
+            back = new Image();
+            back.src = 'image/backgrounds.png';
+            back.onload = function() {
+                draw(context);
+            }
+            // キャラクター画像の準備
+            chara = new Image();
+            chara.src = 'image/github_octocat.png';
+            chara.onload = function() {
+                draw(context);
+            }
+        }
+        // 描画処理
+        function draw(context) {
+            context.drawImage(back, 0, 0);
+            for (var i = 0; i < 5; i++) {
+                context.drawImage(chara, 50 + 150 * i,
+                    300 - 25 * i, 50 + 25 * i, 50 + 25 * i);
+            }
+            // context.drawImage(chara, 300, 300);
+        }
+    </script>
+</head>
+<body onload="initial();">
+    <h1>JavaScript!</h1>
+    <canvas id="canvas" width="1600" height="800" />
+</body>
+</html>
