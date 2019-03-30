@@ -21,6 +21,7 @@ function start() {
 // ゲームの基本処理の呼び出し
 function run() {
     game.run();
+    //game.run();
 }
 // アイテム作成処理
 function makeItem() {
@@ -82,7 +83,7 @@ function Character() {
 function Item() {
     this.w = 60;
     this.h = 100;
-    this.x = Math.floor(Math.random() * (boad_w - this.w));
+    this.x = Math.floor(Math.random() * (board_w - this.w));
     this.y = this.h * -1;
     this.dy = Math.floor(Math.random() * 5) + 1;
     this.image = new Image();
@@ -165,22 +166,22 @@ function Game() {
                     if (this.missed > lost_max) { gameOver(); }
                 }
         }
-        // ゲームのメイン処理
-        this.run = function() {
-            this.chara.direct = 'stop';
-            if (this.chara.x > this.canvas.mouseX) {
-                this.chara.direct = 'left';
-            }
-            if (this.chara.x + this.chara.w < this.canvas.mouseX) {
-                this.chara.direct = 'right';
-            }
-            this.chara.move();
-            for (var n in this.items) {
-                var item = this.items[n];
-                item.move();
-            }
-            this.isCatched();
-            this.draw();
+    }
+    // ゲームのメイン処理
+    this.run = function() {
+        this.chara.direct = 'stop';
+        if (this.chara.x > this.canvas.mouseX) {
+            this.chara.direct = 'left';
         }
+        if (this.chara.x + this.chara.w < this.canvas.mouseX) {
+            this.chara.direct = 'right';
+        }
+        this.chara.move();
+        for (var n in this.items) {
+            var item = this.items[n];
+            item.move();
+        }
+        this.isCatched();
+        this.draw();
     }
 }
