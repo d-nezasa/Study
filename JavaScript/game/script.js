@@ -21,7 +21,6 @@ function start() {
 // ゲームの基本処理の呼び出し
 function run() {
     game.run();
-    //game.run();
 }
 // アイテム作成処理
 function makeItem() {
@@ -55,16 +54,16 @@ function Character() {
     this.draw = function(context) {
         if (this.direct == 'stop') {
             if (this.last_direct == 'right') {
-                context.drawImage(this.imageR, this.x, this.y);
+                context.drawImage(this.imageR, this.x, this.y, 200, 200);
             } else {
-                context.drawImage(this.imageL, this.x, this.y);
+                context.drawImage(this.imageL, this.x, this.y, 200, 200);
             }
         }
         if (this.direct == 'right') {
-            context.drawImage(this.imageR, this.x, this.y);
+            context.drawImage(this.imageR, this.x, this.y, 200, 200);
         }
         if (this.direct == 'left') {
-            context.drawImage(this.imageL, this.x, this.y);
+            context.drawImage(this.imageL, this.x, this.y, 200, 200);
         }
     }
     // キャラクターを動かす
@@ -82,7 +81,7 @@ function Character() {
 
 function Item() {
     this.w = 60;
-    this.h = 100;
+    this.h = 60;
     this.x = Math.floor(Math.random() * (board_w - this.w));
     this.y = this.h * -1;
     this.dy = Math.floor(Math.random() * 5) + 1;
