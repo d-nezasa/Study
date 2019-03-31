@@ -102,6 +102,35 @@ function Item() {
     }
 }
 
+function Star() {
+    this.w = 50;
+    this.h = 50;
+    this.x = Math.floor(
+        Math.random() * (board_w - this.w));
+    this.y = this.h * -1;
+    this.dy = Math.floor(
+        Math.random() * 5) + 1;
+    this.image = new Image();
+    this.image.src = 'star.png';
+    this.sound = document
+        .querySelector('#star_get');
+    this.timer = null;
+    this.draw = function(context) {
+        context.drawImage(this.image,
+            this.x, this.y, this.w, this.h);
+    }
+    this.move = function() {
+        this.y += this.dy;
+    }
+    this.get = function() {
+        this.sound.play();
+        game.chara.dx *= 2;
+        this.timer = setTimeout(function() {
+            game.chara.dx /=2;
+        }, 10000);
+    }
+}
+
 function Game() {
     this.flg = false;
     this.canvas = document.querySelector('#canvas');
@@ -142,7 +171,12 @@ function Game() {
     }
     // アイテムの作成
     this.makeItem = function() {
-        this.items.push(new Item());
+        if (Math.floor(Math.random() * 20) == 0) {
+            game.items.push(new Star());
+        }else{
+            this.items.push(new Item());
+        }
+
     }
     // アイテム取得の処理
     this.isCatched = function() {
