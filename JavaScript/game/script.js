@@ -29,11 +29,21 @@ function makeItem() {
     if (time_dx < 1000) { time_dx = 1000; }
     itemTimer = setTimeout(makeItem, time_dx);
 }
+// ハイスコアの保存
+function checkHiScore() {
+    var hi = localStorage.getItem('hiscore') * 1;
+    if (game.score > hi) {
+        var nickname = prompt('ハイスコア達成です。お名前を入力してください。');
+        localStorage.setItem('hiscore', game.score);
+        localStorage.setItem('hiname', nickname);
+    }
+}
 // ゲーム終了の処理
 function gameOver() {
     clearInterval(gameTimer);
     clearTimeout(itemTimer);
     game.flg = false;
+    checkHiScore();
     game.draw();
 }
 // オブジェクト関係
@@ -160,13 +170,19 @@ function Game() {
             item.draw(this.context);
         }
         this.context.font = "24pt 'Monaca'";
-        this.context.fillStyle = 'white';
+        this.context.fillStyle = 'blue';
         this.context.textAlign = 'start';
         this.context.fillText(this.score, 10, 30);
         if (this.flg == false) {
             this.context.font = "72pt 'san serif'";
             this.context.textAlign = 'center';
+            this.context.fillStyle = 'red';
             this.context.fillText('GAMEOVER', board_w / 2, 200);
+            var hi = localStorage.getItem('hiscore');
+            var nickname = localStorage.getItem('hiname');
+            this.context.font = "24pt 'san serif'";
+            var str = 'hi-score: ' + hi + '(' + nickname + ')';
+            this.context.fillText(str, board_w / 2, 250);
         }
     }
     // アイテムの作成
