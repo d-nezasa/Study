@@ -5,13 +5,22 @@ var board_w = 800;
 var board_h = 400;
 var time_dx = 5000;
 var lost_max = 10;
+var startScreen = null;
+var startScreenTimer = null;
+// スタートアニメーション
+function moveStartScreen() {
+    startScreen.move();
+    startScreen.draw();
+}
 // このページの初期化処理
 function initial() {
     game = new Game();
+    startScreen = new StartScreen();
 }
 // ゲームの開始
 function start() {
     if (game.flg == false) {
+        startScreen.stop();
         game.initial();
         time_dx = 5000;
         gameTimer = setInterval(run, 25);
@@ -138,6 +147,44 @@ function Star() {
         this.timer = setTimeout(function() {
             game.chara.dx /=2;
         }, 10000);
+    }
+}
+
+function StartScreen() {
+    this.bkImage = new Image();
+    this.bkImage.src = 'backgrounds.png';
+    this.charaImage = new Image();
+    this.charaImage.src = 'github_octocat.png';
+    this.x = board_w;
+    this.y = board_h - 200;
+    this.canvas = document.querySelector('#canvas');
+    this.context = canvas.getContext('2d');
+    // タイマースタート
+    this.bkImage.onload = function() {
+        startScreenTimer = setInterval(moveStartScreen, 50);
+    }
+    // キャラクターの移動
+    this.move = function() {
+        this.x -= 5;
+        if (this.x < -200) { this.x = board_w; }
+    }
+    // スタート画面の描画
+    this.draw = function() {
+        this.context.drawImage(this.bkImage, 0, 0);
+        this.context.drawImage(this.charaImage, this.x, this.y, 200, 200);
+        this.context.font = "128pt 'san serif'";
+        this.context.textAlign = 'center';
+        this.context.fillStyle = 'black';
+        this.context.fillText('Octocat!', board_w / 2, 150);
+        var hi = localStorage.getItem('hiscore');
+        var nickname = localStorage.getItem('hiname');
+        this.context.font = "20pt 'san serif'";
+        var str = 'hi-score: ' + hi + '(' + nickname + ')';
+        this.context.fillText(str, board_w / 2, 250);
+    }
+    // ストップ
+    this.stop = function() {
+        clearInterval(startScreenTimer);
     }
 }
 
